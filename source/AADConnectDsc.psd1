@@ -79,7 +79,8 @@
     # DSC resources to export from this module
     DscResourcesToExport = @(
         'AADSyncRule',
-        'AADConnectDirectoryExtensionAttribute'
+        'AADConnectDirectoryExtensionAttribute',
+        'AADSyncRuleCount'
     )
 
     # List of all modules packaged with this module

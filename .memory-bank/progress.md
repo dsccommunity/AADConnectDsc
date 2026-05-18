@@ -8,21 +8,24 @@ shipped work. Older milestones are summarised; full detail lives in
 
 - **Released**: ``0.5.0`` (2025-10-17) — published to PowerShell Gallery via
   the standard Sampler/Azure Pipelines flow.
-- **In ``[Unreleased]``**: Build-system refresh only (``build.ps1``,
-  ``Resolve-Dependency.ps1``, ``RequiredModules.psd1`` aligned to current
-  Sampler). No user-visible behaviour change.
-- **Branch**: ``feature/RuleCountResource`` exists but contains zero commits
-  beyond ``main``. Treat as a name reservation, not work-in-progress.
-- **Open work**: none active. Remaining doc-quality items (markdown lint,
-  link validation) are tracked below.
+- **In ``[Unreleased]``**: build-system refresh + new ``AADSyncRuleCount``
+  DSC resource (report-only rule-count verifier, per-connector or global).
+- **Branch**: ``ai/aadsyncrulecount-resource`` — implements the previously
+  reserved ``feature/RuleCountResource`` scope.
+- **Open work**: unit tests for ``AADSyncRuleCount`` and doc-quality
+  items below.
+
+## Shipped (recent)
+
+- 2026-05-18 — Added ``AADSyncRuleCount`` DSC resource. Throws from
+  ``Set()`` on count drift, never remediates. Event IDs 1100/1101/1102.
 
 ## Remaining Tasks
 
-1. **Markdown lint sweep** across ``docs/`` — minor formatting drift.
-2. **Link validation** for internal/external links in ``README.md`` and
+1. **Unit tests** for ``AADSyncRuleCount`` (mock ``Get-ADSyncRule``).
+2. **Markdown lint sweep** across ``docs/`` — minor formatting drift.
+3. **Link validation** for internal/external links in ``README.md`` and
    ``docs/``.
-3. **Decide RuleCountResource scope** before any code lands on the
-   feature branch.
 
 ## Recent Releases (newest first)
 

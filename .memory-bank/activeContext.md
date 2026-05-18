@@ -4,23 +4,26 @@ _Last updated: 2026-05-18 (UTC). Owner: software-engineer agent._
 
 ## Current Focus
 
-No active feature work. Repository is on eature/RuleCountResource but the
-branch is identical to `main` (HEAD `9033220`); the name appears to be a
-placeholder for a future `AADSyncRuleCount` / rule-inventory resource that
-has not been started.
+Shipped `AADSyncRuleCount` DSC resource on branch
+`ai/aadsyncrulecount-resource` (replaces the reserved
+`feature/RuleCountResource` placeholder). Report-only resource: compares
+expected vs. actual sync-rule count per connector (or across all
+connectors when `ConnectorName` is empty/`*`), throws from `Set()` on
+drift, never remediates. New event IDs 1100/1101/1102.
 
 Most recent shipped change (PR #30, May 2026): refreshed `build.ps1`,
 `Resolve-Dependency.ps1` and `RequiredModules.psd1` to current Sampler
-conventions. Captured in `CHANGELOG.md` under `[Unreleased]`.
+conventions.
 
 ## Open Decisions
 
-- **RuleCountResource scope** — undecided. Likely a read-only/inventory DSC
-  resource or a public function returning sync-rule counts per connector. No
-  spec drafted; do not implement speculatively.
-- **Next release cut** — `[Unreleased]` only contains a build-system refresh.
-  Decide whether to ship as `0.5.1` (patch) or fold into the next feature
-  release. Default: patch, since user-visible surface is unchanged.
+- **Unit tests for AADSyncRuleCount** — not yet written. ADSync cmdlets
+  cannot run on a build agent, so tests must mock `Get-ADSyncRule`. Mirror
+  the pattern used by existing class tests (none exist yet under `tests/`
+  for the resource classes, only `tests/QA/module.tests.ps1`).
+- **Next release cut** — `[Unreleased]` now contains the new resource
+  plus the earlier build-system refresh; bump to `0.6.0` (minor) for the
+  new public surface.
 
 ## Next Steps (when work resumes)
 
