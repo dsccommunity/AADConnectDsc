@@ -5,6 +5,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- New DSC resource `AADSyncRuleCount` that verifies the number of
+  Azure AD Connect synchronization rules against an expected value.
+  The resource is report-only: it never attempts to remediate count
+  drift and instead throws a descriptive error so the LCM marks the
+  configuration as failed. Scope is per-connector via `ConnectorName`,
+  or across all connectors when `ConnectorName` is empty or `*`.
+
 ### Changed
 
 - Updated module dependencies in `RequiredModules.psd1`.
