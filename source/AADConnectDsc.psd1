@@ -74,6 +74,8 @@
     # Variables to export from this module
     VariablesToExport    = @()
 
+    AliasesToExport      = @()
+
     # DSC resources to export from this module
     DscResourcesToExport = @(
         'AADSyncRule',
